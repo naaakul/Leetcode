@@ -1,15 +1,15 @@
 class Solution {
     public int minAddToMakeValid(String s) {
-        Stack<Boolean> boo = new Stack<>();
+        int n = 0;
 
         int ans = 0;
 
         for(char ch : s.toCharArray()){
-            if(ch == '(') boo.push(true);
-            else if(ch == ')' && boo.empty())ans++;
-            else boo.pop();
+            if(ch == '(') n++;
+            else if(ch == ')' && n == 0)ans++;
+            else n--;
         }
 
-        return ans + boo.size();
+        return ans + n;
     }
 }
